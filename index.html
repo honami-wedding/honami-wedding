@@ -4,48 +4,32 @@
 <meta charset="UTF-8">
 <title>ゲスト専用ページ認証</title>
 <style>
-body {
-font-family: "Hiragino Maru Gothic ProN", sans-serif;
-background-color: #fff7f9;
-text-align: center;
-padding: 40px;
-color: #444;
-}
-h1 {
-color: #ff8fb1;
-font-size: 28px;
-}
-.box {
-background: #ffffff;
-padding: 25px;
-border-radius: 15px;
-width: 300px;
-margin: 0 auto;
-box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
-}
-input {
-width: 90%;
-padding: 10px;
-margin: 10px 0;
-border-radius: 10px;
-border: 1px solid #ffb6c1;
-}
-button {
-background-color: #ff8fb1;
-color: white;
-border: none;
-padding: 10px 20px;
-border-radius: 10px;
-cursor: pointer;
-font-size: 16px;
-}
-button:hover {
-background-color: #ff6f9c;
-}
-.error {
-color: #d9534f;
-margin-top: 10px;
-}
+  body {
+    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    text-align: center;
+    color: #555;
+
+    /* ▼▼ ふんわり可愛いオレンジ×青グラデーション ▼▼ */
+    background: linear-gradient(
+      180deg,
+      #ffe8d6 0%,   /* 淡いオレンジ */
+      #fff5ee 30%,  /* ふんわり白 */
+      #e8f4ff 100%  /* 淡い青 */
+    );
+    background-attachment: fixed;
+    /* ▲▲ グラデーションここまで ▲▲ */
+
+    animation: fadeIn 1.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 以下はそのまま使える（前のコードと同じ） */
 </style>
 </head>
 <body>
