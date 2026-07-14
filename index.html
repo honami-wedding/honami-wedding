@@ -1,46 +1,51 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>ゲスト専用ページ認証</title>
-<style>
-  body {
-    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
-    margin: 0;
-    padding: 40px 20px;
-    text-align: center;
-    color: #555;
-
-    /* ▼▼ ふんわり可愛いオレンジ×青グラデーション ▼▼ */
-    background: linear-gradient(
-      180deg,
-      #ffe8d6 0%,   /* 淡いオレンジ */
-      #fff5ee 30%,  /* ふんわり白 */
-      #e8f4ff 100%  /* 淡い青 */
-    );
-    background-attachment: fixed;
-    /* ▲▲ グラデーションここまで ▲▲ */
-
-    animation: fadeIn 1.2s ease;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* 以下はそのまま使える（前のコードと同じ） */
-</style>
-</head>
-<body>
-
-<h1>ゲスト専用ページへようこそ</h1>
-<p>お名前とお誕生日を入力してください</p>
-
-<div class="box">
-<input id="name" type="text" placeholder="お名前（例：田中太郎）">
-<input id="birthday" type="text" placeholder="誕生日（例：19900101）">
-<button onclick="auth()">認証する</button>
+<html lang="ja"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260714-05-1435aa9"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Guest Message</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:ital,wght@0,700;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    .photo-frame { border: 4px solid #fff; box-shadow: 0 8px 32px rgba(180,83,9,0.3); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .fade-up { animation: fadeUp 0.6s ease forwards; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/0179d719c431a79e.data_sdk.js" type="text/javascript" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
+  <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full" style="background: linear-gradient(rgb(255, 251, 240), rgb(255, 255, 255));">
+  <main class="w-full">
+   <section class="relative w-full h-[50vh] overflow-hidden"><img data-template-id="hero-image" class="canva-image absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/28689259/pexels-photo-28689259.jpeg" alt="A close-up of vibrant orange dahlias displayed in a vase, beautifully lit with natural light.">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white"></div>
+   </section>
+   <div class="max-w-xl mx-auto px-6 -mt-16 relative z-10 text-center pb-16">
+    <h1 data-template-id="couple-names" class="canva-text mb-1" style="color: rgb(180, 83, 9); font-weight: 400; font-style: normal; font-size: 32px;">Rintaro &amp; Honami</h1>
+    <p data-template-id="wedding-date" class="canva-text tracking-[0.3em] mb-8" style="color: rgb(217, 119, 6); font-weight: 500; font-style: normal; font-size: 14px;">2026.10.1１</p>
+    <p data-template-id="welcome-message" class="canva-text leading-relaxed mb-10" style="color: rgb(120, 53, 15); font-weight: 400; font-style: normal; font-size: 16px;">私たちの結婚式にお越しいただき
+心より感謝申し上げます。
+皆さまと一緒にこの特別な日を
+過ごせることを楽しみにしています。</p>
+    <div class="flex justify-center mb-10"><img data-template-id="couple-photo-1" class="canva-image w-40 h-40 object-cover rounded-full photo-frame" loading="lazy" src="https://images.pexels.com/photos/13631679/pexels-photo-13631679.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Smiling couple sharing an affectionate moment in the sunlight outdoors.">
+    </div>
+    <section data-template-id="form-section" class="canva-section py-8 px-6 rounded-3xl mb-10" style="background: linear-gradient(135deg, rgb(254, 215, 170), rgb(254, 243, 199));">
+     <h2 data-template-id="form-heading" class="canva-text mb-6" style="color: rgb(180, 83, 9); font-weight: 700; font-style: normal; font-size: 22px;">ゲストメッセージ</h2>
+     <form id="guest-form" class="space-y-4 text-left">
+      <div><label data-template-id="name-label" class="canva-text block mb-1" for="guest-name" style="color: rgb(146, 64, 14); font-weight: 500; font-style: normal; font-size: 16px;">お名前</label> <input id="guest-name" type="text" data-template-id="name-input" class="canva-input w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-300" placeholder="お名前を入力してください" style="font-weight: 400; font-style: normal; font-size: 16px;">
+      </div>
+      <div><label data-template-id="birthday-label" class="canva-text block mb-1" for="guest-birthday" style="color: rgb(146, 64, 14); font-weight: 500; font-style: normal; font-size: 16px;">お誕生日</label> <input id="guest-birthday" type="date" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-300">
+      </div><button data-template-id="submit-button" type="submit" class="canva-button w-full py-3 rounded-xl font-medium mt-2" style="background: linear-gradient(135deg, rgb(217, 119, 6), rgb(245, 158, 11)); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">メッセージを受け取る 🌸</button>
+     </form>
+    </section>
+    <section id="result-area" class="hidden mb-10">
+     <div data-template-id="result-card" class="canva-card py-8 px-6 rounded-3xl" style="background: linear-gradient(135deg, rgb(254, 243, 199), rgb(254, 215, 170));">
+      <p id="personal-message" class="text-lg leading-relaxed text-pink-800"></p>
+     </div>
+    </section>
+   </div>
+  </main>
+   <button onclick="auth()">認証する</button>
 <div id="error" class="error"></div>
 </div>
 
