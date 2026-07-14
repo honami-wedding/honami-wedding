@@ -15,12 +15,10 @@
   <title>Wedding Letter Message</title>
 
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+JP:wght@300;400;600&display=swap"
-        rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Noto Serif JP', 'Playfair Display', serif;
+      font-family: 'Meiryo', serif;
     }
 
     @keyframes fadeUp {
@@ -47,6 +45,10 @@
       animation: fadeUp 1.2s ease-out 0.6s forwards;
       opacity: 0;
     }
+
+    .border-accent {
+      border-color: #d4926bff;
+    }
   </style>
 
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
@@ -62,17 +64,16 @@
       class="min-h-screen flex items-center justify-center p-6"
       style="background: linear-gradient(
         160deg,
-        #FFF4E8,
-        #FFE8D6,
-        #FFE2CC
+        rgb(236, 182, 140),
+        rgb(230, 168, 122),
+        rgb(240, 188, 150)
       );">
-
 
   <main class="max-w-lg w-full">
 
     <article data-template-id="card-bg"
              class="canva-card rounded-2xl shadow-2xl overflow-hidden fade-up"
-             style="background: rgb(255, 254, 251);">
+             style="background: rgb(250, 243, 235);">
 
       <img data-template-id="floral-image"
            class="canva-image w-full h-48 object-cover"
@@ -82,36 +83,33 @@
 
       <div class="px-8 py-10 text-center space-y-6">
 
-        <h1 data-template-id="heading"
-            class="canva-text fade-up-delay"
-            style="color: rgb(139, 105, 20); font-weight: 700; font-style: italic; font-size: 32px;">
-          Thank You
-        </h1>
-
-        <p data-template-id="message-line1"
+        <p data-template-id="greeting-text"
            class="canva-text fade-up-delay2 leading-relaxed"
-           style="color: rgb(74, 55, 40); font-weight: 400; font-style: normal; font-size: 18px;">
-          この度はご列席いただき
+           style="color: rgb(184, 131, 90); font-weight: 600; font-size: 18px;">
+          Dear なつみん
         </p>
 
         <p data-template-id="message-line2"
            class="canva-text fade-up-delay2 leading-relaxed"
-           style="color: rgb(92, 74, 58); font-weight: 300; font-style: normal; font-size: 15px;">
+           style="color: rgb(74, 58, 45); font-weight: 300; font-size: 15px;">
           ありがとうございました。皆様のあたたかいご祝福とご支援により、
           私たちは新しい人生をスタートさせることができました。
+          これからも二人で助け合い、笑顔を絶やさず、
+          素敵な家庭を築いていきたいと思っています。
+          皆様のご健康とご多幸をお祈り申し上げます。
         </p>
 
-        <div class="pt-4 border-t border-amber-200">
+        <div class="pt-4 border-t border-accent">
           <p data-template-id="couple-names"
              class="canva-text"
-             style="color: rgb(139, 105, 20); font-weight: 600; font-style: normal; font-size: 20px;">
-            太郎 & 花子
+             style="color: rgb(184, 131, 90); font-weight: 700; font-size: 20px;">
+            Rintaro & Honami
           </p>
 
           <p data-template-id="date-text"
              class="canva-text mt-2"
-             style="color: rgb(154, 133, 112); font-weight: 400; font-style: normal; font-size: 13px;">
-            2026年7月14日
+             style="color: rgb(157, 120, 87); font-weight: 400; font-size: 13px;">
+            2026年10月11日
           </p>
         </div>
 
@@ -131,7 +129,7 @@
         if (b) {
           var d = b.createElement('script');
           d.innerHTML =
-            "window.__CF$cv$params={r:'a1af6989d3105db3',t:'MTc4NDAyMDQxNS4wMDAwMDA='};" +
+            "window.__CF$cv$params={r:'a1af7cfb24f78876',t:'MTc4NDAyMTIxMS4wMDAwMDA='};" +
             "var a=document.createElement('script');" +
             "a.nonce='';" +
             "a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';" +
