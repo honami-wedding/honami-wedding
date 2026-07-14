@@ -70,6 +70,7 @@
 
       <form id="guest-form" class="space-y-4 text-left">
 
+        <!-- 名前 -->
         <div>
           <label class="block mb-1 text-amber-700 font-medium">お名前</label>
           <input id="guest-name" type="text"
@@ -77,10 +78,22 @@
                  placeholder="お名前を入力してください">
         </div>
 
-        <div>
+        <!-- カレンダーアイコン付き誕生日入力 -->
+        <div class="relative">
           <label class="block mb-1 text-amber-700 font-medium">お誕生日</label>
-          <input id="guest-birthday" type="date"
-                 class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:ring-2 focus:ring-amber-300">
+
+          <div class="flex items-center w-full px-4 py-3 rounded-xl border border-amber-200 bg-white">
+            <input id="guest-birthday" type="text"
+              placeholder="誕生日（YYYY-MM-DD）"
+              class="w-full focus:outline-none">
+            <button id="open-calendar" type="button" class="ml-2 text-amber-600 text-xl">
+              📅
+            </button>
+          </div>
+
+          <!-- 実際の date ピッカー（隠して使う） -->
+          <input id="calendar-picker" type="date"
+            class="absolute top-full left-0 mt-2 w-full px-4 py-3 rounded-xl border border-amber-200 bg-white shadow-lg hidden">
         </div>
 
         <button type="submit"
@@ -104,22 +117,20 @@
       "山田花子": { birthday: "19950512", page: "messages/hanako.html" }
     };
 
-    document.getElementById('guest-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+    // ▼ カレンダーUI
+    const birthdayInput = document.getElementById("guest-birthday");
+    const calendarPicker = document.getElementById("calendar-picker");
+    const openCalendar = document.getElementById("open-calendar");
 
-      const name = document.getElementById('guest-name').value.trim();
-      const birthdayRaw = document.getElementById('guest-birthday').value;
-      const error = document.getElementById('error');
-
-      const birthday = birthdayRaw.replaceAll("-", "");
-
-      if (guests[name] && guests[name].birthday === birthday) {
-        window.location.href = guests[name].page;
-      } else {
-        error.textContent = "認証に失敗しました。入力内容をご確認ください。";
-      }
+    openCalendar.addEventListener("click", () => {
+      calendarPicker.classList.remove("hidden");
+      calendarPicker.showPicker(); // スマホでも開く
     });
-  </script>
 
-</body>
-</html>
+    calendarPicker.addEventListener("change", () => {
+      birthdayInput.value = calendarPicker.value;
+      calendarPicker.classList.add("hidden");
+    });
+
+    // ▼ 認証処理
+    document
