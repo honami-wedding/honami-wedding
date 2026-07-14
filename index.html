@@ -120,18 +120,29 @@
 
 const birthdayInput = document.getElementById("guest-birthday");
 const calendarPopup = document.getElementById("calendar-popup");
-const openCalendar = document.getElementById("open-calendar");
-const calendarTitle = document.getElementById("calendar-title");
 const calendarGrid = document.getElementById("calendar-grid");
+const calendarTitle = document.getElementById("calendar-title");
+const openCalendar = document.getElementById("open-calendar");
 const prevMonth = document.getElementById("prev-month");
 const nextMonth = document.getElementById("next-month");
 
 let current = new Date();
 
-// カレンダーを表示
-openCalendar.addEventListener("click", () => {
+// カレンダー表示
+openCalendar.addEventListener("click", (e) => {
+  e.stopPropagation(); // ★ Safari対策：外側クリック扱いを防ぐ
   calendarPopup.classList.toggle("hidden");
   renderCalendar();
+});
+
+// ★ カレンダー内のクリックは閉じない
+calendarPopup.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// ★ カレンダー外をタップしたら閉じる
+document.addEventListener("click", () => {
+  calendarPopup.classList.add("hidden");
 });
 
 // カレンダー生成
@@ -140,7 +151,6 @@ function renderCalendar() {
   const month = current.getMonth();
 
   calendarTitle.textContent = `${year}年 ${month + 1}月`;
-
   calendarGrid.innerHTML = "";
 
   const firstDay = new Date(year, month, 1).getDay();
@@ -171,12 +181,14 @@ function selectDate(y, m, d) {
 }
 
 // 月移動
-prevMonth.addEventListener("click", () => {
+prevMonth.addEventListener("click", (e) => {
+  e.stopPropagation(); // ★ Safari対策
   current.setMonth(current.getMonth() - 1);
   renderCalendar();
 });
 
-nextMonth.addEventListener("click", () => {
+nextMonth.addEventListener("click", (e) => {
+  e.stopPropagation(); // ★ Safari対策
   current.setMonth(current.getMonth() + 1);
   renderCalendar();
 });
