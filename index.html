@@ -24,12 +24,6 @@
       border: 4px solid #fff;
       box-shadow: 0 8px 32px rgba(180,83,9,0.3);
     }
-
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(20px); }
-      to { opacity:1; transform:translateY(0); }
-    }
-    .fade-up { animation: fadeUp 0.6s ease forwards; }
   </style>
 </head>
 
@@ -66,4 +60,89 @@
     <section class="py-8 px-6 rounded-3xl mb-10"
              style="background: linear-gradient(135deg, rgb(254, 215, 170), rgb(254, 243, 199));">
 
-      <h2 class="mb-6 text-[22px] font-bold text-amber-800">
+      <h2 class="mb-6 text-[22px] font-bold text-amber-800">ゲストの皆様へメッセージ</h2>
+
+      <form id="guest-form" class="space-y-4 text-left">
+
+        <!-- 名前 -->
+        <div>
+          <label class="block mb-1 text-amber-700 font-medium">お名前</label>
+          <input id="guest-name" type="text"
+                 class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:ring-2 focus:ring-amber-300"
+                 placeholder="お名前を入力してください">
+        </div>
+
+        <!-- カレンダーアイコン付き誕生日入力 -->
+        <div class="relative">
+          <label class="block mb-1 text-amber-700 font-medium">お誕生日</label>
+
+          <div class="flex items-center w-full px-4 py-3 rounded-xl border border-amber-200 bg-white">
+            <input id="guest-birthday" type="text"
+              placeholder="誕生日（YYYY-MM-DD）"
+              class="w-full focus:outline-none">
+            <button id="open-calendar" type="button" class="ml-2 text-amber-600 text-xl">
+              📅
+            </button>
+          </div>
+
+          <!-- 実際の date ピッカー（隠して使う） -->
+          <input id="calendar-picker" type="date"
+            class="absolute top-full left-0 mt-2 w-full px-4 py-3 rounded-xl border border-amber-200 bg-white shadow-lg hidden">
+        </div>
+
+        <button type="submit"
+                class="w-full py-3 rounded-xl font-medium mt-2 text-white"
+                style="background: linear-gradient(135deg, rgb(217, 119, 6), rgb(245, 158, 11));">
+          メッセージを受け取る 🌼
+        </button>
+
+        <p id="error" class="text-red-600 text-center mt-2"></p>
+
+      </form>
+    </section>
+
+  </div>
+
+  <!-- 認証ロジック -->
+  <script>
+    // ★ ゲスト情報をここに追加 ★
+    const guests = {
+      "田中太郎": { birthday: "20261011", page: "messages/natsumi.html" },
+      "山田花子": { birthday: "19950512", page: "messages/hanako.html" }
+    };
+
+    // ▼ カレンダーUI
+    const birthdayInput = document.getElementById("guest-birthday");
+    const calendarPicker = document.getElementById("calendar-picker");
+    const openCalendar = document.getElementById("open-calendar");
+
+    openCalendar.addEventListener("click", () => {
+      calendarPicker.classList.remove("hidden");
+      calendarPicker.showPicker(); // スマホでも開く
+    });
+
+    calendarPicker.addEventListener("change", () => {
+      birthdayInput.value = calendarPicker.value;
+      calendarPicker.classList.add("hidden");
+    });
+
+    // ▼ 認証処理
+    document.getElementById('guest-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('guest-name').value.trim();
+      const birthdayRaw = birthdayInput.value;
+      const error = document.getElementById('error');
+
+      const birthday = birthdayRaw.replaceAll("-", "");
+
+      if (guests[name] && guests[name].birthday === birthday) {
+        window.location.href = guests[name].page;
+      } else {
+        error.textContent = "認証に失敗しました。入力内容をご確認ください。";
+      }
+    });
+  </script>
+
+</body>
+</html>
