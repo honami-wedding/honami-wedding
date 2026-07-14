@@ -24,9 +24,9 @@
     <h1 data-template-id="couple-names" class="canva-text mb-1" style="color: rgb(180, 83, 9); font-weight: 400; font-style: normal; font-size: 32px;">Rintaro &amp; Honami</h1>
     <p data-template-id="wedding-date" class="canva-text tracking-[0.3em] mb-8" style="color: rgb(217, 119, 6); font-weight: 500; font-style: normal; font-size: 14px;">2026.10.1１</p>
     <p data-template-id="welcome-message" class="canva-text leading-relaxed mb-10" style="color: rgb(120, 53, 15); font-weight: 400; font-style: normal; font-size: 16px;">私たちの結婚式にお越しいただき
-心より感謝申し上げます。
+心より感謝申し上げます<br>
 皆さまと一緒にこの特別な日を
-過ごせることを楽しみにしています。</p>
+過ごせることを楽しみにしています</p>
     <div class="flex justify-center mb-10"><img data-template-id="couple-photo-1" class="canva-image w-40 h-40 object-cover rounded-full photo-frame" loading="lazy" src="https://images.pexels.com/photos/13631679/pexels-photo-13631679.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Smiling couple sharing an affectionate moment in the sunlight outdoors.">
     </div>
     <section data-template-id="form-section" class="canva-section py-8 px-6 rounded-3xl mb-10" style="background: linear-gradient(135deg, rgb(254, 215, 170), rgb(254, 243, 199));">
@@ -35,7 +35,8 @@
       <div><label data-template-id="name-label" class="canva-text block mb-1" for="guest-name" style="color: rgb(146, 64, 14); font-weight: 500; font-style: normal; font-size: 16px;">お名前</label> <input id="guest-name" type="text" data-template-id="name-input" class="canva-input w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-300" placeholder="お名前を入力してください" style="font-weight: 400; font-style: normal; font-size: 16px;">
       </div>
       <div><label data-template-id="birthday-label" class="canva-text block mb-1" for="guest-birthday" style="color: rgb(146, 64, 14); font-weight: 500; font-style: normal; font-size: 16px;">お誕生日</label> <input id="guest-birthday" type="date" class="w-full px-4 py-3 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-300">
-      </div><button data-template-id="submit-button" type="submit" class="canva-button w-full py-3 rounded-xl font-medium mt-2" style="background: linear-gradient(135deg, rgb(217, 119, 6), rgb(245, 158, 11)); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">メッセージを受け取る 🌸</button>
+      </div><button data-template-id="submit-button" type="submit" class="canva-button w-full py-3 rounded-xl font-medium mt-2" style="background: linear-gradient(135deg, rgb(217, 119, 6), rgb(245, 158, 11)); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;" onclick="auth()">メッセージを受け取る 🌸</button>
+     <div id="error" class="error"></div>
      </form>
     </section>
     <section id="result-area" class="hidden mb-10">
@@ -45,8 +46,7 @@
     </section>
    </div>
   </main>
-   <button onclick="auth()">認証する</button>
-<div id="error" class="error"></div>
+
 </div>
 
 <script>
