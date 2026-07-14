@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ゲスト専用ページ認証</title>
+<style>
+body {
+font-family: "Hiragino Maru Gothic ProN", sans-serif;
+background-color: #fff7f9;
+text-align: center;
+padding: 40px;
+color: #444;
+}
+h1 {
+color: #ff8fb1;
+font-size: 28px;
+}
+.box {
+background: #ffffff;
+padding: 25px;
+border-radius: 15px;
+width: 300px;
+margin: 0 auto;
+box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+}
+input {
+width: 90%;
+padding: 10px;
+margin: 10px 0;
+border-radius: 10px;
+border: 1px solid #ffb6c1;
+}
+button {
+background-color: #ff8fb1;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 10px;
+cursor: pointer;
+font-size: 16px;
+}
+button:hover {
+background-color: #ff6f9c;
+}
+.error {
+color: #d9534f;
+margin-top: 10px;
+}
+</style>
+</head>
+<body>
 
+<h1>ゲスト専用ページへようこそ</h1>
+<p>お名前とお誕生日を入力してください</p>
+
+<div class="box">
+<input id="name" type="text" placeholder="お名前（例：田中太郎）">
+<input id="birthday" type="text" placeholder="誕生日（例：19900101）">
+<button onclick="auth()">認証する</button>
+<div id="error" class="error"></div>
+</div>
+
+<script>
+// ★ ゲスト情報をここに追加していく ★
+const guests = {
+"田中太郎": { birthday: "19900101", page: "messages/taro.html" },
+"山田花子": { birthday: "19950512", page: "messages/hanako.html" }
+};
+
+function auth() {
+const name = document.getElementById("name").value.trim();
+const birthday = document.getElementById("birthday").value.trim();
+const error = document.getElementById("error");
+
+if (guests[name] && guests[name].birthday === birthday) {
+window.location.href = guests[name].page;
+} else {
+error.textContent = "認証に失敗しました。入力内容をご確認ください。";
+}
+}
+</script>
+
+</body>
+</html>
